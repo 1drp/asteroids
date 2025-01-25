@@ -8,6 +8,8 @@ def main():
 
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pygame.time.Clock()
+    dt = 0
 
     # main game loop
     while True:
@@ -18,6 +20,10 @@ def main():
         # Fill background
         screen.fill((0,0,0))
         pygame.display.flip()
+        dt = clock.tick(60) / 1000
+        
+        # DEBUG: Uncomment line below to print FPS to console
+        #print(clock.get_fps())
 
 
 if __name__ == "__main__":
