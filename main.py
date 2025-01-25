@@ -25,6 +25,7 @@ def main():
         screen.fill((0,0,0))
 
         # Draw Player
+        me.update(dt)
         me.draw(screen)
 
 
