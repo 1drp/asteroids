@@ -13,6 +13,11 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # pygame groups for organization
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updateable, drawable)
+
     me = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     # main game loop
@@ -24,9 +29,11 @@ def main():
         # Fill background
         screen.fill((0,0,0))
 
-        # Draw Player
-        me.update(dt)
-        me.draw(screen)
+        # Update groups
+        for ud in updateable:
+            ud.update(dt)
+        for dw in drawable:
+            dw.draw(screen)
 
 
         pygame.display.flip()
